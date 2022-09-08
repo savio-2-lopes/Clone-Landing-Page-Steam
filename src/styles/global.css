@@ -1,0 +1,23 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  @apply bg-gray-900 text-gray-100;
+  font-family: "Inter";
+}
+
+.swiper-pagination-bullet {
+  border-radius: 1px !important;
+  background-color: #0094ff !important;
+  height: 6px !important;
+  width: 64px !important;
+}
+
+.swiper-horizontal > .swiper-pagination-bullets,
+.swiper-pagination-bullets.swiper-pagination-horizontal,
+.swiper-pagination-custom,
+.swiper-pagination-fraction {
+  position: relative !important;
+  bottom: -7px !important;
+}
