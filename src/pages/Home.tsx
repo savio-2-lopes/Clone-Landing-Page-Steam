@@ -442,7 +442,9 @@ export function Home() {
           </div>
         </>
       ) : (
-        <Spinner />
+        <div className="mt-12">
+          <Spinner />
+        </div>
       )}
       <Footer />
     </>
