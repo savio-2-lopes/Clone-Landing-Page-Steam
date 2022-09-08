@@ -8,28 +8,26 @@ import "swiper/css/pagination";
 import "swiper/css/bundle";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 export function Home() {
   const [showButton, setShowButton] = useState(false);
   const [showNotification, setShowNotification] = useState(false);
   const [showMenu, setShowMenu] = useState(false);
   const [showData, setShowData] = useState([]);
+  const data = `https://api.rawg.io/api/games?key=${
+    import.meta.env.VITE_API_KEY
+  }`;
 
   useEffect(() => {
-    axios
-      .get(
-        `https://api.rawg.io/api/games?key=${process.env.REACT_APP_SECRET_NAME}`
-      )
-      .then((response) => {
-        setShowData(response.data.results);
-      });
+    axios.get(data).then((response) => {
+      setShowData(response.data.results);
+    });
   });
-
-  console.log("\n\n\n\n\nshowData", showData);
 
   return (
     <>
-      {/* navbar */}
+      {/* Navbar */}
       <nav className="bg-blue-700">
         <div className="pb-[15px] pt-[15px] mx-auto container px-2 lg:px-6 lg:px-8">
           <div className="relative flex h-16 items-center justify-between">
@@ -96,8 +94,7 @@ export function Home() {
                 <div className="flex space-x-4">
                   <a
                     href="#"
-                    className="text-white uppercase text-[18px] border-4 hover:mb-[-1.40rem] border border-blue-700 hover:border-b-blue-500 hover:text-blue-500 px-3 py-2 rounded-md text-sm font-medium"
-                    aria-current="page"
+                    className="text-blue-500 uppercase text-[18px] border-4 mb-[-1.40rem] border-blue-700 border-b-blue-500 hover:text-blue-500 px-3 py-2 rounded-md text-sm font-medium"
                   >
                     Loja
                   </a>
@@ -251,8 +248,8 @@ export function Home() {
         modules={[Pagination]}
         className="mySwiper"
       >
-        {showData.map((element) => (
-          <SwiperSlide>
+        {showData.map((element, index) => (
+          <SwiperSlide key={index}>
             <div
               className="min-h-[70vh] flex"
               style={{
@@ -275,9 +272,11 @@ export function Home() {
                     mortos.
                   </p>
 
-                  <button className="mt-[32px] w-[229px] h-[55px] bg-blue-400 hover:opacity-90 uppercase py-4 rounded font-bold text-sm transition-colors disabled:opacity-50">
-                    Compre Agora
-                  </button>
+                  <Link to={element["slug"]}>
+                    <button className="mt-[32px] w-[229px] h-[55px] bg-blue-400 hover:opacity-90 uppercase py-4 rounded font-bold text-sm transition-colors disabled:opacity-50">
+                      Compre Agora
+                    </button>
+                  </Link>
                 </div>
               </div>
             </div>
@@ -287,7 +286,7 @@ export function Home() {
 
       {/* Menu */}
       <section className="container mx-auto bg-blue-700 mt-10">
-        <div className="pb-[10px] pt-[10px] flex justify-around px-2 lg:px-6 lg:px-8">
+        <div className="pb-[10px] pt-[10px] flex">
           <div className="relative flex h-16 items-center">
             <div className="absolute inset-y-0 left-0 flex items-center lg:hidden">
               <button
@@ -338,7 +337,7 @@ export function Home() {
                 <div className="flex space-x-4">
                   <a
                     href="#"
-                    className="text-white uppercase text-[18px] border-4 hover:mb-[-1.40rem] border border-blue-700 hover:border-b-blue-500 hover:text-blue-500 px-3 py-2 rounded-md text-sm font-medium"
+                    className="text-blue-500 uppercase text-[18px] border-4 mb-[-1.40rem] border border-blue-700 border-b-blue-500 px-3 py-2 rounded-md text-sm font-medium"
                     aria-current="page"
                   >
                     Novidades e tendências
@@ -428,19 +427,21 @@ export function Home() {
           modules={[Pagination]}
           className="mySwiper"
         >
-          {showData.map((element) => (
-            <SwiperSlide>
-              <div
-                className="flex items-end justify-center"
-                style={{
-                  background: `linear-gradient(180deg, rgba(12, 12, 12, 0) 51.56%, #0C0C0C 100%), url(${element["background_image"]})`,
-                  backgroundRepeat: "no-repeat",
-                  width: "280px",
-                  height: "450px",
-                }}
-              >
-                <img className="mb-10" src="./src/assets/lo.png" alt="" />
-              </div>
+          {showData.map((element, index) => (
+            <SwiperSlide key={index}>
+              <Link to={element["slug"]}>
+                <div
+                  className="flex items-end justify-center"
+                  style={{
+                    background: `linear-gradient(180deg, rgba(12, 12, 12, 0) 51.56%, #0C0C0C 100%), url(${element["background_image"]})`,
+                    backgroundRepeat: "no-repeat",
+                    width: "280px",
+                    height: "450px",
+                  }}
+                >
+                  <img className="mb-10" src="./src/assets/lo.png" alt="" />
+                </div>
+              </Link>
             </SwiperSlide>
           ))}
         </Swiper>
