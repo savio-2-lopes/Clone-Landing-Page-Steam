@@ -12,6 +12,14 @@ import HeadTitle from "../components/HeadTitle";
 import Logo from "../components/Logo";
 import CardTitle from "../components/CardTitle";
 import { Spinner } from "../components/Spinner";
+import {
+  BellSimple,
+  Cards,
+  CaretDown,
+  ChatCircle,
+  Minus,
+  X,
+} from "phosphor-react";
 
 export function Home() {
   const [showButton, setShowButton] = useState(false);
@@ -119,25 +127,14 @@ export function Home() {
             <div className="absolute inset-y-0 right-0 flex items-center pr-2 lg:static lg:inset-auto lg:ml-6 lg:pr-0">
               <button
                 type="button"
-                className="rounded-full bg-gray-800 p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
+                className="rounded-full bg-gray-800 hidden lg:block mr-10 p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
               >
-                <span className="sr-only">View notifications</span>
-                <svg
-                  className="h-6 w-6"
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke-width="1.5"
-                  stroke="currentColor"
-                  aria-hidden="true"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    d="M14.857 17.082a23.848 23.848 0 005.454-1.31A8.967 8.967 0 0118 9.75v-.7V9A6 6 0 006 9v.75a8.967 8.967 0 01-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 01-5.714 0m5.714 0a3 3 0 11-5.714 0"
-                  />
-                </svg>
+                <BellSimple size={32} />
               </button>
+
+              <div className="relative mr-10 hidden lg:block">
+                <ChatCircle size={32} />
+              </div>
 
               <div className="relative ml-3">
                 <div>
@@ -194,6 +191,22 @@ export function Home() {
                     </a>
                   </div>
                 )}
+              </div>
+
+              <div className="relative ml-3">
+                <CaretDown size={32} />
+              </div>
+
+              <div className="relative ml-10 hidden lg:block">
+                <Minus size={32} />
+              </div>
+
+              <div className="relative ml-10 hidden lg:block">
+                <Cards size={32} />
+              </div>
+
+              <div className="relative ml-10 hidden lg:block">
+                <X size={32} />
               </div>
             </div>
           </div>
