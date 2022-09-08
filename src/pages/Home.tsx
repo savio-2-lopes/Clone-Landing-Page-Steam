@@ -1,5 +1,4 @@
 import Footer from "../components/Footer";
-import { Navbar } from "../components/Navbar";
 import { Search } from "../components/Search";
 import { Pagination } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -9,6 +8,9 @@ import "swiper/css/bundle";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import HeadTitle from "../components/HeadTitle";
+import Logo from "../components/Logo";
+import CardTitle from "../components/CardTitle";
 
 export function Home() {
   const [showButton, setShowButton] = useState(false);
@@ -78,16 +80,7 @@ export function Home() {
 
             <div className="flex flex-1 items-center justify-center lg:items-stretch lg:justify-start">
               <div className="flex flex-shrink-0 items-center">
-                <img
-                  className="block h-8 w-auto lg:hidden"
-                  src="./src/assets/logo.png"
-                  alt="Your Company"
-                />
-                <img
-                  className="hidden h-8 w-auto lg:block"
-                  src="./src/assets/logo.png"
-                  alt="Your Company"
-                />
+                <Logo />
               </div>
 
               <div className="hidden lg:ml-6 lg:block">
@@ -260,11 +253,7 @@ export function Home() {
             >
               <div className="container mx-auto flex items-center">
                 <div className="max-w-[360px]">
-                  <img
-                    src="./src/assets/2.png"
-                    className="w-[240px] h-[90.24px]"
-                    alt="Logo Game"
-                  />
+                  <HeadTitle />
                   <p className="mt-[32.76px] text-[18px] font-[500] text-white leading-relaxed">
                     Estados Unidos, 1899. O fim da era do velho oeste começou, e
                     as autoridades estão caçando as últimas gangues de fora da
@@ -439,7 +428,7 @@ export function Home() {
                     height: "450px",
                   }}
                 >
-                  <img className="mb-10" src="./src/assets/lo.png" alt="" />
+                  <CardTitle />
                 </div>
               </Link>
             </SwiperSlide>
