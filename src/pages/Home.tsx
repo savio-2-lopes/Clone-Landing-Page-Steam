@@ -280,7 +280,7 @@ export function Home() {
 
           {/* Menu */}
           <section className="container mx-auto bg-blue-700 mt-10">
-            <div className="pb-[10px] pt-[10px] flex">
+            <div className="pb-[10px] pt-[10px] flex justify-center">
               <div className="relative flex h-16 items-center">
                 <div className="absolute inset-y-0 left-0 flex items-center lg:hidden">
                   <button
